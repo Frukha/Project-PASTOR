@@ -1,14 +1,21 @@
 package com.example.projectchucknorris
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
+import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.RecyclerView
+import kotlinx.serialization.*
+import kotlinx.serialization.builtins.ListSerializer
+import kotlinx.serialization.json.Json
+
 
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         Log.d("jokes", Jokes.list_jokes.toString())
+        val recyclerView = findViewById<RecyclerView>(R.id.list_)
+        recyclerView.adapter = JokeAdapter()
     }
 }
 
