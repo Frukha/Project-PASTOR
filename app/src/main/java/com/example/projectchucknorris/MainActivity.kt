@@ -35,3 +35,4 @@ object Jokes {
         "Chuck Norris never wet his bed as a child. The bed wet itself out of fear.",
         "Chuck Norris doesn't wear sunscreen when he is in the sun. The Sun wears Chuck Norris Screen.")
 }
+

@@ -1,4 +1,4 @@
-package com.example.projectchucknorris;
+package com.example.projectchucknorris
 
 import android.view.LayoutInflater
 import android.view.View
