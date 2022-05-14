@@ -9,7 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 
 
 class JokeAdapter : RecyclerView.Adapter <JokeAdapter.JokeViewHolder>() {
-    var list_jokes_adapter = listOf < String > ("Chuck Norris can run so fast, he can actually shoot an apple off of his own head.",
+    /*var list_jokes_adapter = listOf < String > ("Chuck Norris can run so fast, he can actually shoot an apple off of his own head.",
         "Chuck Norris doesn't feel your pain... he causes it.",
         "Chuck Norris uses pepper spray to spice up his steaks.",
         "God said let there be light Chuck Norris said say please.",
@@ -18,9 +18,16 @@ class JokeAdapter : RecyclerView.Adapter <JokeAdapter.JokeViewHolder>() {
         "Chuck Norris' shadow follows him from a safe distance.",
         "There is no theory of evolution, just a list of creatures Chuck Norris allows to live.",
         "Chuck Norris never wet his bed as a child. The bed wet itself out of fear.",
-        "Chuck Norris doesn't wear sunscreen when he is in the sun. The Sun wears Chuck Norris Screen.")
+        "Chuck Norris doesn't wear sunscreen when he is in the sun. The Sun wears Chuck Norris Screen.")*/
 
-    var list_jokes_adapter_joke : List<Joke> = list_jokes_adapter.map{Joke(value = it)}
+    //var list_jokes_adapter_joke : List<Joke> = list_jokes_adapter.map{Joke(value = it)}
+
+    var listOfJoke = listOf<Joke>()
+
+    fun addJoke(joke: Joke) {
+        listOfJoke = listOfJoke + joke
+        notifyDataSetChanged()
+    }
 
     class JokeViewHolder(val constraintLayout: ConstraintLayout) : RecyclerView.ViewHolder(constraintLayout){
         val textView : TextView = constraintLayout.findViewById<TextView>(R.id.jokes)
@@ -32,9 +39,9 @@ class JokeAdapter : RecyclerView.Adapter <JokeAdapter.JokeViewHolder>() {
     }
 
     override fun onBindViewHolder(holder: JokeViewHolder, position: Int) {
-        val joke = list_jokes_adapter_joke[position]
+        val joke = listOfJoke[position]
         holder.textView.text = joke.value
     }
 
-    override fun getItemCount(): Int = list_jokes_adapter_joke.size
+    override fun getItemCount(): Int = listOfJoke.size
 }
