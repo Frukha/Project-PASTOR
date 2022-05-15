@@ -25,7 +25,8 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val recyclerView = findViewById<RecyclerView>(R.id.list_)
         recyclerView.adapter = adapter
-        retrieveJoke()
+        if(savedInstanceState == null)
+            retrieveJoke()
         //val button = findViewById<Button>(R.id.button_id)
         //button.setOnClickListener{retrieveJoke()}
 
@@ -36,6 +37,20 @@ class MainActivity : AppCompatActivity() {
         compositeDisposable.clear()
     }
 
+    override fun onSaveInstanceState(outState: Bundle) { // Here You have to save count value
+        super.onSaveInstanceState(outState)
+        //Log.d("MyTag", "onSaveInstanceState")
+        val listOfJokeSerialized = Json.encodeToString(adapter.listOfJoke)
+        outState.putString(key, listOfJokeSerialized)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) { // Here You have to restore count value
+        super.onRestoreInstanceState(savedInstanceState)
+        //Log.d("MyTag", "onRestoreInstanceState")
+        val savedString = savedInstanceState.getString(key)!!
+        val listOfJokeDeserialized: List<Joke> = Json.decodeFromString(savedString)
+        adapter.listOfJoke = listOfJokeDeserialized
+    }
 
     private fun retrieveJoke(){
         val progressBar = findViewById<ProgressBar>(R.id.progressBar_id)
@@ -60,5 +75,6 @@ class MainActivity : AppCompatActivity() {
 
     val adapter = JokeAdapter(onBottomReached = {retrieveJoke()})
 
+    val key = "KeyToList"
 
 }
