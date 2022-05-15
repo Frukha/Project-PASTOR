@@ -1,5 +1,6 @@
 package com.example.projectchucknorris
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -42,8 +43,13 @@ class JokeAdapter(val onBottomReached : () -> Unit) : RecyclerView.Adapter <Joke
     override fun onBindViewHolder(holder: JokeViewHolder, position: Int) {
         val joke = listOfJoke[position]
         holder.textView.text = joke.value
-        // onBottomReached()
+
+        if (position == listOfJoke.lastIndex && position >=9) {
+            onBottomReached()
+        }
+
     }
 
     override fun getItemCount(): Int = listOfJoke.size
+
 }
