@@ -8,7 +8,7 @@ import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.recyclerview.widget.RecyclerView
 
 
-class JokeAdapter : RecyclerView.Adapter <JokeAdapter.JokeViewHolder>() {
+class JokeAdapter(val onBottomReached : () -> Unit) : RecyclerView.Adapter <JokeAdapter.JokeViewHolder>() {
     /*var list_jokes_adapter = listOf < String > ("Chuck Norris can run so fast, he can actually shoot an apple off of his own head.",
         "Chuck Norris doesn't feel your pain... he causes it.",
         "Chuck Norris uses pepper spray to spice up his steaks.",
@@ -21,6 +21,7 @@ class JokeAdapter : RecyclerView.Adapter <JokeAdapter.JokeViewHolder>() {
         "Chuck Norris doesn't wear sunscreen when he is in the sun. The Sun wears Chuck Norris Screen.")*/
 
     //var list_jokes_adapter_joke : List<Joke> = list_jokes_adapter.map{Joke(value = it)}
+
 
     var listOfJoke = listOf<Joke>()
 
@@ -41,6 +42,7 @@ class JokeAdapter : RecyclerView.Adapter <JokeAdapter.JokeViewHolder>() {
     override fun onBindViewHolder(holder: JokeViewHolder, position: Int) {
         val joke = listOfJoke[position]
         holder.textView.text = joke.value
+        // onBottomReached()
     }
 
     override fun getItemCount(): Int = listOfJoke.size
