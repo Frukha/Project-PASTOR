@@ -31,7 +31,8 @@ Nous avons aussi dû changer la TextView à l'aide de joke_layout et LayoutInfla
 
 ## 1. Create the data model matching the API
 
-Il nous faut maintenant créer une data class nommée Joke et l'accompagner du tag @Serializable. Dans cette dernière, il a aussi fallu ajouter les differentes valeurs correspondant aux catégories.  
+Il nous faut maintenant créer une data class nommée Joke et l'accompagner du tag @Serializable.  
+Dans cette dernière, il a aussi fallu ajouter les differentes valeurs correspondant aux catégories.  
 Le fichier JokeSerializationTest.kt sera là pour vérifier si notre code est correcte ou non.
 
 ## 2. Import Retrofit & Rx Java
@@ -83,8 +84,8 @@ Maintenant, les blagues se rafraichissent en atteignant le bas de la page.
 
 ## 1. Manage screen rotation
 
-Jusqu'à maintenant, une rotation de l'écran forçait les blagues à être rechargées et donc changées. \n
-Pour remédier à cela, il va falloir override deux fonctions: onSaveInstanceState et onRestoreInstanceState. \n
+Jusqu'à maintenant, une rotation de l'écran forçait les blagues à être rechargées et donc changées.  
+Pour remédier à cela, il va falloir override deux fonctions: onSaveInstanceState et onRestoreInstanceState.  
 Cela nous permet de garder la liste que l'on avait avant la rotation, et pour qu'aucune blague ne se rajoute pas, il faut s'assurer que retrieveJoke ne s'active pas durant une rotation.
 
 ## 2. Custom Joke View (Commencé mais pas terminé)
